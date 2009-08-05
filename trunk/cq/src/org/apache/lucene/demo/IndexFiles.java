@@ -17,7 +17,6 @@ package org.apache.lucene.demo;
  * limitations under the License.
  */
 
-import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.apache.lucene.index.IndexWriter;
 
 import java.io.File;

@@ -2,27 +2,27 @@ package love.cq.splitWord;
 
 public interface SplitWord {
 	/**
-	 * ÕıÏò×î´ó±ê¼Ç
-	 * @param str ´«ÈëµÄĞèÒª·Ö´ÊµÄ¾ä×Ó
+	 * æ­£å‘æœ€å¤§æ ‡è®°
+	 * @param str ä¼ å…¥çš„éœ€è¦åˆ†è¯çš„å¥å­
 	 * @return
 	 */
 	public String tagMaxFront(String str) ;
 	/**
-	 * ÕıÏò×îĞ¡Æ¥Åä±ê¼Ç
-	 * @param str ´«ÈëµÄĞèÒª·Ö´ÊµÄ¾ä×Ó
-	 * @return ·µ»¹·ÖÍê´ÊºóµÄ¾ä×Ó
+	 * æ­£å‘æœ€å°åŒ¹é…æ ‡è®°
+	 * @param str ä¼ å…¥çš„éœ€è¦åˆ†è¯çš„å¥å­
+	 * @return è¿”è¿˜åˆ†å®Œè¯åçš„å¥å­
 	 */
 	public String tagMinFront(String str) ;
 	/**
-	 * ÄæÏò×î´óÆ¥Åä±ê¼Ç
-	 * @param str ´«ÈëµÄĞèÒª·Ö´ÊµÄ¾ä×Ó
-	 * @return ·µ»¹·ÖÍê´ÊºóµÄ¾ä×Ó
+	 * é€†å‘æœ€å¤§åŒ¹é…æ ‡è®°
+	 * @param str ä¼ å…¥çš„éœ€è¦åˆ†è¯çš„å¥å­
+	 * @return è¿”è¿˜åˆ†å®Œè¯åçš„å¥å­
 	 */
 	public String tagMaxConverse(String str) ;
 	/**
-	 * ÄæÏò×îĞ¡Æ¥Åä±ê¼Ç
-	 * @param str ´«ÈëµÄĞèÒª·Ö´ÊµÄ¾ä×Ó
-	 * @return ·µ»¹·ÖÍê´ÊºóµÄ¾ä×Ó
+	 * é€†å‘æœ€å°åŒ¹é…æ ‡è®°
+	 * @param str ä¼ å…¥çš„éœ€è¦åˆ†è¯çš„å¥å­
+	 * @return è¿”è¿˜åˆ†å®Œè¯åçš„å¥å­
 	 */
 	public String tagMinConverse(String str) ;
 

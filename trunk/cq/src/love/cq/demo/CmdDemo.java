@@ -8,21 +8,21 @@ import love.cq.splitWord.impl.GetWordsImpl;
 public class CmdDemo {
 	public static void main(String[] args) {
 		System.out.println("verison 0.1.0");
-		System.out.println("°æ±¾ÃèÊö£ºÊı¾İ½á¹¹\"Ë«Êı×étireÊ÷\",Ó¦¸ÃÊÇÄ¿Ç°×î¿ìµÄÖĞÎÄ·Ö´ÊËã·¨.°æ±¾ÊµÏÖÁË¶ÔÖĞÎÄ´Ê×é.×î´óÆ¥ÅäºÍ×îĞ¡Æ¥ÅäµÄÍêÕûÇĞ·Ö£¬"
-				+ "ÕâÖ»ÊÇÒ»¸ö³¢ÊÔ°æ±¾.Ã»ÓĞ¶àÉÙ¿ÉÒÔÓÃµÄ¼ÛÖµ.´òËãÔÚÏÂÒ»°æÖĞÖĞ¼ÓÈë¸ù¾İÓïÒå·Ö´Ê.×Ô¶¨Òå´Êµä."
-				+ "ÈËÃû,µØÃûµÈµÄÊ¶±ğ.ÔÚÕâÀïĞ»Ğ»ÄÇĞ©°ïÖú¹ıÎÒµÄÈË.Èç¹û´ó¼ÒÓĞ¸üºÃµÄ½¨Òé»òÕßÏëÒ»Æğ×ö¾ÍÁªÏµÎÒ!"
-				+ "ÎÒµÄÁªÏµ·½Ê½£ºansj-sun@163.com");
-		System.out.println("´Êµä¼ÓÔØÖĞ.......");
+		System.out.println("ç‰ˆæœ¬æè¿°ï¼šæ•°æ®ç»“æ„\"åŒæ•°ç»„tireæ ‘\",åº”è¯¥æ˜¯ç›®å‰æœ€å¿«çš„ä¸­æ–‡åˆ†è¯ç®—æ³•.ç‰ˆæœ¬å®ç°äº†å¯¹ä¸­æ–‡è¯ç»„.æœ€å¤§åŒ¹é…å’Œæœ€å°åŒ¹é…çš„å®Œæ•´åˆ‡åˆ†ï¼Œ"
+				+ "è¿™åªæ˜¯ä¸€ä¸ªå°è¯•ç‰ˆæœ¬.æ²¡æœ‰å¤šå°‘å¯ä»¥ç”¨çš„ä»·å€¼.æ‰“ç®—åœ¨ä¸‹ä¸€ç‰ˆä¸­ä¸­åŠ å…¥æ ¹æ®è¯­ä¹‰åˆ†è¯.è‡ªå®šä¹‰è¯å…¸."
+				+ "äººå,åœ°åç­‰çš„è¯†åˆ«.åœ¨è¿™é‡Œè°¢è°¢é‚£äº›å¸®åŠ©è¿‡æˆ‘çš„äºº.å¦‚æœå¤§å®¶æœ‰æ›´å¥½çš„å»ºè®®æˆ–è€…æƒ³ä¸€èµ·åšå°±è”ç³»æˆ‘!"
+				+ "æˆ‘çš„è”ç³»æ–¹å¼ï¼šansj-sun@163.com");
+		System.out.println("è¯å…¸åŠ è½½ä¸­.......");
 		GetWordsImpl gwi = new GetWordsImpl();
 		while (true) {
 			System.out.println("************************");
-			System.out.println("1.	È«ÎÄÕıÏò×î´ó±ê¼Ç");
-			System.out.println("2.	È«ÎÄÕıÏò×îĞ¡±ê¼Ç");
-			System.out.println("3.	È«ÎÄÈ«Æ¥ÅäÈ¡´Ê");
-			System.out.println("4.	È«ÎÄÕıÏò×î´óÈ¡´Ê");
-			System.out.println("5.	È«ÎÄÕıÏò×îĞ¡È¡´Ê");
+			System.out.println("1.	å…¨æ–‡æ­£å‘æœ€å¤§æ ‡è®°");
+			System.out.println("2.	å…¨æ–‡æ­£å‘æœ€å°æ ‡è®°");
+			System.out.println("3.	å…¨æ–‡å…¨åŒ¹é…å–è¯");
+			System.out.println("4.	å…¨æ–‡æ­£å‘æœ€å¤§å–è¯");
+			System.out.println("5.	å…¨æ–‡æ­£å‘æœ€å°å–è¯");
 			System.out.println("************************");
-			System.out.print("ÄúÑ¡ÔñÄúÒª½øĞĞµÄ²Ù×÷(1-5):");
+			System.out.print("æ‚¨é€‰æ‹©æ‚¨è¦è¿›è¡Œçš„æ“ä½œ(1-5):");
 			BufferedReader reader = new BufferedReader(new InputStreamReader(
 					System.in));
 			String txt = null;
@@ -31,10 +31,10 @@ public class CmdDemo {
 					int k = Integer.parseInt(txt);
 					if (k < 1 || k > 5)
 						throw new Exception();
-					System.out.println("ÇëÊäÈëÄúÒª²ğ·ÖµÄ¾ä×Ó:");
+					System.out.println("è¯·è¾“å…¥æ‚¨è¦æ‹†åˆ†çš„å¥å­:");
 					txt = reader.readLine() ;
 					long start = System.currentTimeMillis();
-					System.out.println("----------Æ¥Åä½á¹û------------");
+					System.out.println("----------åŒ¹é…ç»“æœ------------");
 					switch (k) {
 					case 1:
 						break;
@@ -61,20 +61,20 @@ public class CmdDemo {
 
 					}
 					System.out.println("------------------------------");
-					System.out.println("²Ù×÷½áÊø,¹²ÓÃÊ±:"
-							+ (System.currentTimeMillis() - start) + "ms.°´»Ø³µ¼ü¼ü¼ÌĞø.....");
+					System.out.println("æ“ä½œç»“æŸ,å…±ç”¨æ—¶:"
+							+ (System.currentTimeMillis() - start) + "ms.æŒ‰å›è½¦é”®é”®ç»§ç»­.....");
 					reader.readLine(); 
 					System.out.println("************************");
-					System.out.println("1.	È«ÎÄÕıÏò×î´ó±ê¼Ç");
-					System.out.println("2.	È«ÎÄÕıÏò×îĞ¡±ê¼Ç");
-					System.out.println("3.	È«ÎÄÈ«Æ¥ÅäÈ¡´Ê");
-					System.out.println("4.	È«ÎÄÕıÏò×î´óÈ¡´Ê");
-					System.out.println("5.	È«ÎÄÕıÏò×îĞ¡È¡´Ê");
+					System.out.println("1.	å…¨æ–‡æ­£å‘æœ€å¤§æ ‡è®°");
+					System.out.println("2.	å…¨æ–‡æ­£å‘æœ€å°æ ‡è®°");
+					System.out.println("3.	å…¨æ–‡å…¨åŒ¹é…å–è¯");
+					System.out.println("4.	å…¨æ–‡æ­£å‘æœ€å¤§å–è¯");
+					System.out.println("5.	å…¨æ–‡æ­£å‘æœ€å°å–è¯");
 					System.out.println("************************");
-					System.out.print("ÄúÑ¡ÔñÄúÒª½øĞĞµÄ²Ù×÷(1-5):");
+					System.out.print("æ‚¨é€‰æ‹©æ‚¨è¦è¿›è¡Œçš„æ“ä½œ(1-5):");
 				}
 			} catch (Exception e) {
-				System.out.println("ÄúµÄÑ¡ÔñÓĞÎó.ÇëÖØĞÂÑ¡Ôñ!");
+				System.out.println("æ‚¨çš„é€‰æ‹©æœ‰è¯¯.è¯·é‡æ–°é€‰æ‹©!");
 			}
 		}
 	}

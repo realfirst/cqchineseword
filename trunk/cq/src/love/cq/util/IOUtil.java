@@ -11,15 +11,15 @@ import java.io.InputStreamReader;
 import java.io.RandomAccessFile;
 import java.io.UnsupportedEncodingException;
 
+import com.sun.istack.internal.NotNull;
+
 public class IOUtil {
 	private static InputStream is = null ;
 	private static FileOutputStream fos = null ;
 	public static InputStream getInputStream(String path){
 		try {
 			File f = new File(path) ;
-			if(f.isFile()){
-				return new FileInputStream(path) ;
-			}
+			return new FileInputStream(path) ;
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -28,10 +28,7 @@ public class IOUtil {
 	}
 	public static BufferedReader getReader(String path , String charEncoding) throws UnsupportedEncodingException{
 		is = getInputStream(path) ;
-		if(is!=null){
-			return new BufferedReader(new InputStreamReader(is,charEncoding)) ;
-		}
-		return null ;
+		return new BufferedReader(new InputStreamReader(is,charEncoding)) ;
 	}
 	
 	public static RandomAccessFile getRandomAccessFile(String path , String charEncoding) throws FileNotFoundException{

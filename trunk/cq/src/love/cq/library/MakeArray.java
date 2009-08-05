@@ -8,13 +8,13 @@ import java.util.Map;
 import love.cq.util.IOUtil;
 
 public class MakeArray {
-	// ÖÕ¼«Ä¿±ê
+	// ç»ˆæç›®æ ‡
 	public static int base[] = new int[1000000];
-	// ÑéÖ¤Êı×é
+	// éªŒè¯æ•°ç»„
 	public static int check[] = new int[1000000];
-	// ´ÊÓï×´Ì¬
+	// è¯è¯­çŠ¶æ€
 	public static int status[] = new int[1000000];
-	// µ±Ç°Êı×éµÄ´Ê
+	// å½“å‰æ•°ç»„çš„è¯
 	public static String words[] = new String[1000000];
 
 	public static void main(String[] args) throws Exception {
@@ -24,15 +24,15 @@ public class MakeArray {
 	}
 
 	/**
-	 * path ÅÅĞòºÃ´ÊµäµÄÂ·¾¶ haspath ×Ö·û±àÂë×ÖµäµÄÂ·¾¶ arrayPath Éú³É×ÖµäµÄÂ·¾¶ charEncoding
-	 * ¹ØÓÚ×ÖµäºÍÉú³É´ÊµäµÄ×Ö·û±àÂëÉèÖÃ
+	 * path æ’åºå¥½è¯å…¸çš„è·¯å¾„ haspath å­—ç¬¦ç¼–ç å­—å…¸çš„è·¯å¾„ arrayPath ç”Ÿæˆå­—å…¸çš„è·¯å¾„ charEncoding
+	 * å…³äºå­—å…¸å’Œç”Ÿæˆè¯å…¸çš„å­—ç¬¦ç¼–ç è®¾ç½®
 	 */
 	private static String path = "library/sortLibrary.dic";
-	private static String charEncoding = "GBK";
+	private static String charEncoding = "UTF-8";
 
 
 	/**
-	 * ×ÖµäµÄ¹¹½¨Ë«Êı×étireÊ÷
+	 * å­—å…¸çš„æ„å»ºåŒæ•°ç»„tireæ ‘
 	 * 
 	 * @throws Exception
 	 */
@@ -50,7 +50,7 @@ public class MakeArray {
 		writeLibrary();
 	}
 	/**
-	 * Êı×éµÄÉú³É
+	 * æ•°ç»„çš„ç”Ÿæˆ
 	 */
 	public static void makeBaseArray(BufferedReader reader) throws Exception{
 		char[] chars = null;
@@ -100,7 +100,7 @@ public class MakeArray {
 		}
 	}
 	/**
-	 * ½«Éú³ÉµÄÊı×éĞ´³É´ÊµäÎÄ¼ş
+	 * å°†ç”Ÿæˆçš„æ•°ç»„å†™æˆè¯å…¸æ–‡ä»¶
 	 */
 	public static void writeLibrary(){
 		StringBuilder sb = new StringBuilder();
@@ -114,10 +114,10 @@ public class MakeArray {
 		IOUtil.Writer(InitDictionary.arraysPath, charEncoding, sb.toString());
 	}
 	/**
-	 * ÉèÖÃbaseÊı×éÖĞµÄ¸¸Öµ,Ê¹µÃÒÔ¸¸¿ªÍ·µÄµµ´Î¶¼ÄÜ·Åµ½Êı×éÖĞ
+	 * è®¾ç½®baseæ•°ç»„ä¸­çš„çˆ¶å€¼,ä½¿å¾—ä»¥çˆ¶å¼€å¤´çš„æ¡£æ¬¡éƒ½èƒ½æ”¾åˆ°æ•°ç»„ä¸­
 	 * 
 	 * @param tempString
-	 *            ÒÔ¸¸¿ªÍ·µ¥´ÊµÄÈ«²¿¼¯ºÏ
+	 *            ä»¥çˆ¶å¼€å¤´å•è¯çš„å…¨éƒ¨é›†åˆ
 	 */
 	private static Iterator<String> it;
 	private static char[] chars = null;;
@@ -135,10 +135,10 @@ public class MakeArray {
 	}
 
 	/**
-	 * ÕÒµ½¸Ã×Ö·û´®ÉÏÒ»¸öµÄÎ»ÖÃ×Ö·û´®ÉÏÒ»¸öµÄÎ»ÖÃ
+	 * æ‰¾åˆ°è¯¥å­—ç¬¦ä¸²ä¸Šä¸€ä¸ªçš„ä½ç½®å­—ç¬¦ä¸²ä¸Šä¸€ä¸ªçš„ä½ç½®
 	 * 
 	 * @param chars
-	 *            ´«ÈëµÄ×Ö·û´®charÊı×é
+	 *            ä¼ å…¥çš„å­—ç¬¦ä¸²charæ•°ç»„
 	 * @return
 	 */
 	public static int getBaseNum(char[] chars) {
@@ -157,10 +157,10 @@ public class MakeArray {
 	}
 
 	/**
-	 * ÅĞ¶ÏÔÚbaseÊı×éÖĞÕâ¸öÎ»ÖÃÊÇ·ñÓĞÕâ¸ö¶ÔÏó°º
+	 * åˆ¤æ–­åœ¨baseæ•°ç»„ä¸­è¿™ä¸ªä½ç½®æ˜¯å¦æœ‰è¿™ä¸ªå¯¹è±¡æ˜‚
 	 * 
 	 * @param num
-	 *            baseÊı×éÖĞµÄÎ»ÖÃ
+	 *            baseæ•°ç»„ä¸­çš„ä½ç½®
 	 * @return
 	 */
 	public static boolean isHave(int num) {

@@ -2,42 +2,42 @@ package love.cq.splitWord;
 
 public interface GetWords {
 	/**
-	 * ÕıÏò×î´óÈ¡´Ê
-	 * @param str ´«ÈëµÄĞèÒªÈ¡´ÊµÄ¾ä×Ó
+	 * æ­£å‘æœ€å¤§å–è¯
+	 * @param str ä¼ å…¥çš„éœ€è¦å–è¯çš„å¥å­
 	 * @return
 	 */
 //	public String maxFrontWords() ;
 	/**
-	 * ÕıÏò×îĞ¡Æ¥ÅäÈ¡´Ê
-	 * @param str ´«ÈëµÄĞèÒªÈ¡´ÊµÄ¾ä×Ó
-	 * @return ·µ»¹È¡µÃµÄÒ»¸ö´Ê
+	 * æ­£å‘æœ€å°åŒ¹é…å–è¯
+	 * @param str ä¼ å…¥çš„éœ€è¦å–è¯çš„å¥å­
+	 * @return è¿”è¿˜å–å¾—çš„ä¸€ä¸ªè¯
 	 */
 //	public String minFrontWords() ;
 	/**
-	 * ÄæÏò×î´óÆ¥Åä±ê¼Ç
-	 * @param str ´«ÈëµÄĞèÒª·Ö´ÊµÄ¾ä×Ó
-	 * @return ·µ»¹·ÖÍê´ÊºóµÄ¾ä×Ó
+	 * é€†å‘æœ€å¤§åŒ¹é…æ ‡è®°
+	 * @param str ä¼ å…¥çš„éœ€è¦åˆ†è¯çš„å¥å­
+	 * @return è¿”è¿˜åˆ†å®Œè¯åçš„å¥å­
 	 */
 //	public String maxConverseWords(String str) ;
 	/**
-	 * ÄæÏò×îĞ¡Æ¥Åä±ê¼Ç
-	 * @param str ´«ÈëµÄĞèÒª·Ö´ÊµÄ¾ä×Ó
-	 * @return ·µ»¹·ÖÍê´ÊºóµÄ¾ä×Ó
+	 * é€†å‘æœ€å°åŒ¹é…æ ‡è®°
+	 * @param str ä¼ å…¥çš„éœ€è¦åˆ†è¯çš„å¥å­
+	 * @return è¿”è¿˜åˆ†å®Œè¯åçš„å¥å­
 	 */
 //	public String minConverseWords(String str) ;
 	/**
-	 * È«ÎÄÈ«´ÊÈ«Æ¥Åä
-	 * @param str ´«ÈëµÄĞèÒª·Ö´ÊµÄ¾ä×Ó
-	 * @return ·µ»¹·ÖÍê´ÊºóµÄ¾ä×Ó
+	 * å…¨æ–‡å…¨è¯å…¨åŒ¹é…
+	 * @param str ä¼ å…¥çš„éœ€è¦åˆ†è¯çš„å¥å­
+	 * @return è¿”è¿˜åˆ†å®Œè¯åçš„å¥å­
 	 */
 	public String allWords() ;
 	/**
-	 * Í¬Ò»¸ö¶ÔÏó´«Èë´ÊÓï
-	 * @param temp ´«ÈëµÄ¾ä×Ó
+	 * åŒä¸€ä¸ªå¯¹è±¡ä¼ å…¥è¯è¯­
+	 * @param temp ä¼ å…¥çš„å¥å­
 	 */
 	public void setStr(String temp);
 	/**
-	 * ÖØÉè·Ö´Ê
+	 * é‡è®¾åˆ†è¯
 	 */
 	public void reset() ;
 }

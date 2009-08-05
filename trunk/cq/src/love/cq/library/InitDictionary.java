@@ -3,48 +3,49 @@ package love.cq.library;
 import java.io.BufferedReader;
 
 import love.cq.util.IOUtil;
+import love.cq.util.MyStaticValue;
 
 public class InitDictionary {
 	/**
-	 * arrayLength : ¼ÇÂ¼ÁËÊı×éµÄ´óĞ¡
+	 * arrayLength : è®°å½•äº†æ•°ç»„çš„å¤§å°
 	 */
 	private static final int ARRAYLENGTH = 562940;
 	/**
-	 * base: Êı×éÓÃÀ´´æ·Åµ¥´ÊµÄ×ª»»..ÆäÊµ¾ÍÊÇÒ»¸öDFA×ª»»¹ı³Ì
+	 * base: æ•°ç»„ç”¨æ¥å­˜æ”¾å•è¯çš„è½¬æ¢..å…¶å®å°±æ˜¯ä¸€ä¸ªDFAè½¬æ¢è¿‡ç¨‹
 	 */
 	public static int[] base = new int[ARRAYLENGTH];
 	/**
-	 * check: Êı×éÓÃÀ´ÑéÖ¤ÀïÃæ´æ´¢µÄÊÇÉÏÒ»¸ö×´Ì¬µÄÎ»ÖÃ
+	 * check: æ•°ç»„ç”¨æ¥éªŒè¯é‡Œé¢å­˜å‚¨çš„æ˜¯ä¸Šä¸€ä¸ªçŠ¶æ€çš„ä½ç½®
 	 */
 	public static int[] check = new int[ARRAYLENGTH];
 	/**
-	 * status: ÓÃÀ´ÅĞ¶ÏÒ»¸öµ¥´ÊµÄ×´Ì¬ 1.Îª²»³É´Ê.´¦ÓÚ¹ı¶È½×¶Î 2.³É´ÎÒ²¿ÉÄÜÊÇ´ÊÓïµÄÒ»²¿·Ö. 3.´ÊÓï½áÊø example: ÖĞ 1 ÖĞ»ª
-	 * 2 ÖĞ»ªÈË 1 ÖĞ»ªÈËÃñ 3
+	 * status: ç”¨æ¥åˆ¤æ–­ä¸€ä¸ªå•è¯çš„çŠ¶æ€ 1.ä¸ºä¸æˆè¯.å¤„äºè¿‡åº¦é˜¶æ®µ 2.æˆæ¬¡ä¹Ÿå¯èƒ½æ˜¯è¯è¯­çš„ä¸€éƒ¨åˆ†. 3.è¯è¯­ç»“æŸ example: ä¸­ 1 ä¸­å
+	 * 2 ä¸­åäºº 1 ä¸­åäººæ°‘ 3
 	 */
 	public static byte[] status = new byte[ARRAYLENGTH];
 	/**
-	 * words : Êı×éËùÔÚÎ»ÖÃµÄ´Ê
+	 * words : æ•°ç»„æ‰€åœ¨ä½ç½®çš„è¯
 	 */
 	public static String[] words = new String[ARRAYLENGTH];
 	/**
-	 * arraysPath: base±àÂëµÄÓ²ÅÌÎ»ÖÃ
+	 * arraysPath: baseç¼–ç çš„ç¡¬ç›˜ä½ç½®
 	 */
 	public static String arraysPath = "library/arrays.dic";
 	/**
-	 * arraysPath: base±àÂëµÄÓ²ÅÌÎ»ÖÃ
+	 * arraysPath: baseç¼–ç çš„ç¡¬ç›˜ä½ç½®
 	 */
 	public static String arraysNumberPath = "library/numberLibrary.dic";
 	/**
-	 * arraysPath: base±àÂëµÄÓ²ÅÌÎ»ÖÃ
+	 * arraysPath: baseç¼–ç çš„ç¡¬ç›˜ä½ç½®
 	 */
-	public static String arraysEnglishPath = "library/english/englishLibrary.dic";
+	public static String arraysEnglishPath = MyStaticValue.rb.getString("english");
 	/**
-	 * Á½±¾´ÊµäµÄ×Ö·û±àÂë
+	 * ä¸¤æœ¬è¯å…¸çš„å­—ç¬¦ç¼–ç 
 	 */
-	private static String charEncoding = "GBK";
+	private static String charEncoding = "UTF-8";
 
 	/**
-	 * ÅĞ¶Ï´ÊµäÊÇ·ñ¼ÓÔØ¹ı
+	 * åˆ¤æ–­è¯å…¸æ˜¯å¦åŠ è½½è¿‡
 	 */
 	private static boolean isInit = false;
 
@@ -54,17 +55,18 @@ public class InitDictionary {
 			try {
 				initArrays();
 				isInit = true ;
-				System.out.println("´Êµä¼ÓÔØÍê³ÉÓÃÊ±:"
-						+ (System.currentTimeMillis() - start) + "ºÁÃë");
+				System.out.println("è¯å…¸åŠ è½½å®Œæˆç”¨æ—¶:"
+						+ (System.currentTimeMillis() - start) + "æ¯«ç§’");
 			} catch (Exception e) {
 				e.printStackTrace();
-				System.err.print("´Êµä¼ÓÔØ³ö´í");
+				System.err.print("è¯å…¸åŠ è½½å‡ºé”™");
 			}
 		}
 	}
 
 	/**
-	 * ¶ÔÓÚbase,check,natrue,statusµÄ¼ÓÔØ
+	 * å¯¹äºbase,check,natrue,statusçš„åŠ è½½
+	 * 0.ä»£è¡¨è¿™ä¸ªå­—ä¸åœ¨è¯å…¸ä¸­ 1.ç»§ç»­ 2.æ˜¯ä¸ªè¯ä½†æ˜¯è¿˜å¯ä»¥ç»§ç»­ 3.åœæ­¢å·²ç»æ˜¯ä¸ªè¯äº†
 	 * 
 	 * @throws Exception
 	 */
