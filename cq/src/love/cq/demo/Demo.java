@@ -31,16 +31,17 @@ public class Demo {
 				"年院系调整后，同济大学成为国内土木建筑领域最大、专业最全的工科大学。　　1978年经中央批" +
 				"准恢复对德交流，在中科院学部委员李国豪校长领导下实行“两个转变”，即由土木为主的理工科大" +
 				"学向理工为主的多科性大学转变，由国内普通高校向作为中外文化交流“窗口”之一的国际性大学转" +
-				"变，从而迅速恢复和发展成为一所以工为主、理工结合，经、管、文、法各具特色的多科性大学。");
+				"变，从而迅速恢复和发展成为一所以工为主、理工结合，经、管、文、法各具特色的多科性大学。孙健");
 		System.out.println();
 		CqTokenizer cq = new CqTokenizer(sr,false);
 		Token token = null;
 		StringBuilder sb = new StringBuilder() ;
 		long start = System.currentTimeMillis() ;
 		while ((token = cq.next()) != null) {
-//			sb.append(token) ;
-//			sb.append('\n') ;
+			sb.append(token) ;
+			sb.append('\n') ;
 		}
 		System.out.println(System.currentTimeMillis()-start);
+		System.out.println(sb);
 	}
 }
