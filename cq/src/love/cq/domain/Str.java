@@ -12,7 +12,7 @@ public class Str implements Comparable<Str> {
 	}
 
 	private int length;
-	// 1Î´Íê½á2Íê½áµ«ÊÇ»¹ÓĞ¿ÉÄÜÓĞ3Íê½áÁËÒÔºóÒ²Ã»ÓĞÁË4Ó¢ÕZ5”µ×Ö
+	// 1æœªå®Œç»“2å®Œç»“ä½†æ˜¯è¿˜æœ‰å¯èƒ½æœ‰3å®Œç»“äº†ä»¥åä¹Ÿæ²¡æœ‰äº†4è‹±èª5æ•¸å­—
 	private int statu;
 	private String nature;
 

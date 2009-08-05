@@ -2,6 +2,7 @@ package love.cq.library;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.Iterator;
 import java.util.Set;
 import java.util.TreeMap;
@@ -9,42 +10,44 @@ import java.util.TreeSet;
 
 import love.cq.domain.Str;
 import love.cq.util.IOUtil;
+import love.cq.util.MyStaticValue;
 
 public class MakeLibrary {
-	private static String charEncoding = "GBK";
-	private static String path = "library/library.dic" ;
-	private static final String ENGLISH = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJK" +
-			"LMNOPQRSTUVWXYZ'" ;
-	private static final String NUMBER = "0123456789£°£±£²£³£´£µ£¶£·£¸£¹.%" ;
+	private static String charEncoding = "UTF-8";
+	private static String path = MyStaticValue.rb.getString("library") ;
+	private static String measure = MyStaticValue.rb.getString("measure") ;
+	private static String sortLibrary = MyStaticValue.rb.getString("sortLibrary") ;
+	
+	private static TreeMap<Str, Str> treeMap = new TreeMap<Str, Str>();
 
 	public static void main(String[] args) throws Exception {
 		long start = System.currentTimeMillis();
-		sortLibrary();
 		englishLibrary() ;
 		numberLibrary() ;
+		sortLibrary();
 		System.out.println(System.currentTimeMillis() - start);
 	}
 
 	/**
-	 * ¹¹Ôì¼òµ¥µÄÓ¢Óï´Êµä status:4
+	 * æž„é€ ç®€å•çš„è‹±è¯­è¯å…¸ status:4
 	 * @throws Exception
 	 */
 	public static void englishLibrary() throws Exception{
-		String[] stringArray = ENGLISH.split("") ;
+		String[] stringArray = MyStaticValue.ENGLISH.split("") ;
 		String str = natureLibrary(stringArray,4) ;
 		IOUtil.Writer(InitDictionary.arraysEnglishPath, "UTF-8", str);
 	}
 	/**
-	 * ¹¹Ôì¼òµ¥µÄÊý×Ö´Êµä status:5
+	 * æž„é€ ç®€å•çš„æ•°å­—è¯å…¸ status:5
 	 * @throws Exception
 	 */
 	public static void numberLibrary() throws Exception{
-		String[] stringArray = NUMBER.split("") ;
+		String[] stringArray = MyStaticValue.NUMBER.split("") ;
 		String str = natureLibrary(stringArray,5) ;
 		IOUtil.Writer(InitDictionary.arraysNumberPath, "UTF-8", str);
 	}
 	/**
-	 * ¹¹Ôì¼òµ¥µÄ¾ßÓÐÍ¨ÓÃ´ÊÐÔµÄ´Êµä,±ÈÈçÊý×Ö.Ó¢Óï...
+	 * æž„é€ ç®€å•çš„å…·æœ‰é€šç”¨è¯æ€§çš„è¯å…¸,æ¯”å¦‚æ•°å­—.è‹±è¯­...
 	 * @throws Exception
 	 */
 	public static String natureLibrary(String[] StringArray , int nature) {
@@ -58,15 +61,20 @@ public class MakeLibrary {
 		return sb.toString() ;
 	}
 	/**
-	 * ÖØ¹¹´Êµä.¸ù¾Ý½á¹¹ÌåµÄ¹æÔò½«baseÊý×éÄ£ÐÍ¹¹½¨³öÀ´ baseÄ£ÐÍµÄ¹æÔòÊ×ÏÈ°´Ë³ÐòÅÅÁÐ.Æä´Î°´hashCodeÅÅÁÐ
-	 * 
+	 * é‡æž„è¯å…¸.æ ¹æ®ç»“æž„ä½“çš„è§„åˆ™å°†baseæ•°ç»„æ¨¡åž‹æž„å»ºå‡ºæ¥ baseæ¨¡åž‹çš„è§„åˆ™é¦–å…ˆæŒ‰é¡ºåºæŽ’åˆ—.å…¶æ¬¡æŒ‰hashCodeæŽ’åˆ—
 	 * @throws IOException
 	 */
-	public static void sortLibrary() throws IOException {
+	
+	public static void sortLibrary() throws IOException{
 		BufferedReader reader = IOUtil.getReader(path, charEncoding);
+		sortLibrary(reader,2,3) ;
+		write(treeMap,sortLibrary);
+		
+	}
+	public static void sortLibrary(BufferedReader reader,int status2,int status3) throws IOException {
+		
 		String temp = null;
-		StringBuilder sb = new StringBuilder();
-		TreeMap<Str, Str> treeMap = new TreeMap<Str, Str>();
+		
 		Str str = null;
 		Str tempStr;
 		String line;
@@ -89,11 +97,11 @@ public class MakeLibrary {
 								strTemp.setNature(temps[2]);
 						}
 						if (strTemp.getStatu() == 1) {
-							strTemp.setStatu(2);
+							strTemp.setStatu(status2);
 						}
 					} else {
 						if (strTemp.getStatu() == 3) {
-							strTemp.setStatu(2);
+							strTemp.setStatu(status2);
 						}
 					}
 					continue;
@@ -101,7 +109,7 @@ public class MakeLibrary {
 					if (i == length - 1) {
 						if (temps.length > 2)
 							str.setNature(temps[2]);
-						str.setStatu(3);
+						str.setStatu(status3);
 					} else {
 						str.setStatu(1);
 					}
@@ -109,13 +117,18 @@ public class MakeLibrary {
 				treeMap.put(tempStr, str);
 			}
 		}
+		
+	}
+	
+	public static void write(TreeMap treeMap,String sortLibrary){
+		StringBuilder sb = new StringBuilder();
 		Iterator<Str> it = treeMap.values().iterator();
 		while (it.hasNext()) {
 			sb.append(it.next());
 			sb.append("\n");
 		}
-		sb.append("À¬»øÊý¾Ý	3");
-		IOUtil.Writer("library/sortLibrary.dic", "UTF-8", sb.toString());
+		sb.append("åžƒåœ¾æ•°æ®	3");
+		IOUtil.Writer(sortLibrary, "UTF-8", sb.toString());
 	}
 
 }

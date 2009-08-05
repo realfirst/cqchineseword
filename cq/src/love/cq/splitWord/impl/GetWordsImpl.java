@@ -2,43 +2,38 @@ package love.cq.splitWord.impl;
 
 import love.cq.library.InitDictionary;
 import love.cq.splitWord.GetWords;
+import love.cq.util.WordAlert;
 
 public class GetWordsImpl implements GetWords {
 
 	/**
-	 * base: Êı×éÓÃÀ´´æ·Åµ¥´ÊµÄ×ª»»..ÆäÊµ¾ÍÊÇÒ»¸öDFA×ª»»¹ı³Ì
+	 * base: æ•°ç»„ç”¨æ¥å­˜æ”¾å•è¯çš„è½¬æ¢..å…¶å®å°±æ˜¯ä¸€ä¸ªDFAè½¬æ¢è¿‡ç¨‹
 	 */
-	public static int[] base = null;
+	private static int[] base = null;
 	/**
-	 * check: Êı×éÓÃÀ´ÑéÖ¤ÀïÃæ´æ´¢µÄÊÇÉÏÒ»¸ö×´Ì¬µÄÎ»ÖÃ
+	 * check: æ•°ç»„ç”¨æ¥éªŒè¯é‡Œé¢å­˜å‚¨çš„æ˜¯ä¸Šä¸€ä¸ªçŠ¶æ€çš„ä½ç½®
 	 */
-	public static int[] check = null;
+	private static int[] check = null;
 	/**
-	 * status: ÓÃÀ´ÅĞ¶ÏÒ»¸öµ¥´ÊµÄ×´Ì¬ 1.Îª²»³É´Ê.´¦ÓÚ¹ı¶È½×¶Î 2.³É´ÎÒ²¿ÉÄÜÊÇ´ÊÓïµÄÒ»²¿·Ö. 3.´ÊÓï½áÊø example: ÖĞ 1 ÖĞ»ª
-	 * 2 ÖĞ»ªÈË 1 ÖĞ»ªÈËÃñ 3
+	 * status: ç”¨æ¥åˆ¤æ–­ä¸€ä¸ªå•è¯çš„çŠ¶æ€ 1.ä¸ºä¸æˆè¯.å¤„äºè¿‡åº¦é˜¶æ®µ 2.æˆæ¬¡ä¹Ÿå¯èƒ½æ˜¯è¯è¯­çš„ä¸€éƒ¨åˆ†. 3.è¯è¯­ç»“æŸ example: ä¸­ 1 ä¸­å
+	 * 2 ä¸­åäºº 1 ä¸­åäººæ°‘ 3
 	 */
 	public static byte[] status = null;
 	/**
-	 * words : Êı×éËùÔÚÎ»ÖÃµÄ´Ê
+	 * words : æ•°ç»„æ‰€åœ¨ä½ç½®çš„è¯
 	 */
 	public static String[] words = null;
 	/**
-	 * index : ×Ö·ûµÄÆ«ÒÆÁ¿
+	 * è®°å½•ä¸Šä¸€æ¬¡çš„åç§»é‡
 	 */
-	public static int index = 0;
-	
+	private int tempOffe ;
 	/**
-	 * tempIndex : ×Ö·ûÉÏÒ»´ÎµÄÆ«ÒÆÁ¿
-	 */
-	public static int tempIndex ;
-	
-	/**
-	 * offe : µ±Ç°´ÊµÄÆ«ÒÆÁ¿
+	 * offe : å½“å‰è¯çš„åç§»é‡
 	 */
 	public int offe ;
 
 	/**
-	 * ¹¹Ôì·½·¨£¬Í¬Ê±¼ÓÔØ´Êµä,´«Èë´ÊÓïÏàµ±ÓÚÍ¬Ê±µ÷ÓÃÁËsetStr() ;
+	 * æ„é€ æ–¹æ³•ï¼ŒåŒæ—¶åŠ è½½è¯å…¸,ä¼ å…¥è¯è¯­ç›¸å½“äºåŒæ—¶è°ƒç”¨äº†setStr() ;
 	 */
 	public GetWordsImpl(String str) {
 		InitDictionary.init();
@@ -47,12 +42,10 @@ public class GetWordsImpl implements GetWords {
 		status = InitDictionary.status;
 		words = InitDictionary.words ;
 		chars = str.toCharArray();
-		index += tempIndex ;
-		tempIndex = chars.length ;
 	}
 
 	/**
-	 * ¹¹Ôì·½·¨£¬Í¬Ê±¼ÓÔØ´Êµä
+	 * æ„é€ æ–¹æ³•ï¼ŒåŒæ—¶åŠ è½½è¯å…¸
 	 */
 	public GetWordsImpl() {
 		InitDictionary.init();
@@ -65,26 +58,26 @@ public class GetWordsImpl implements GetWords {
 
 	public void setStr(String str) {
 		chars = str.toCharArray();
-		index += tempIndex ;
-		tempIndex = chars.length ;
+	}
+	
+	public void setStr(char[] chars) {
+		this.chars = chars;
 	}
 
-	private char[] chars;
+	public char[] chars;
 	private int charHashCode;
 	private int start = 0;
 	public int end = 0;
-	private int tempEnd = 0;
 	private int baseValue = 0;
 	private int checkValue = 0;
-	private boolean hasEnd = false;
 	private int tempBaseValue = 0 ;
-	private int i = 0;
+	public int i = 0;
 	private String str;
 
 	public String allWords() {
 		for (; i < chars.length; i++) {
+			charHashCode = chars[i] ;
 			end++;
-			charHashCode = chars[i];
 			switch (getStatement()) {
 			case 0:
 				i = start;
@@ -94,12 +87,12 @@ public class GetWordsImpl implements GetWords {
 				break;
 			case 2:
 				i++;
-				offe = index +start ;
+				offe = tempOffe+start ;
 				return words[baseValue] ;
 			case 3:
+				offe = tempOffe+start ;
 				start++;
 				i = start;
-				tempEnd = end;
 				end = 0;
 				tempBaseValue = baseValue ;
 				baseValue = 0;
@@ -111,8 +104,10 @@ public class GetWordsImpl implements GetWords {
 				if(i!=chars.length){
 					end-- ;
 				}
-				str = new String(chars, start, end).toLowerCase();
+				offe = tempOffe+start ;
+				str = WordAlert.alertEnglish(chars, start, end);
 				start = start+end ;
+				i = start ;
 				end = 0 ;
 				baseValue = 0;
 				return str ;
@@ -123,8 +118,10 @@ public class GetWordsImpl implements GetWords {
 				if(i!=chars.length){
 					end-- ;
 				}
-				str = new String(chars, start, end);
+				offe = tempOffe+start ;
+				str = WordAlert.alertNumber(chars, start, end);
 				start = start+end ;
+				i = start ;
 				end = 0 ;
 				baseValue = 0;
 				return str ;
@@ -134,6 +131,7 @@ public class GetWordsImpl implements GetWords {
 			i = start;
 			return allWords() ;
 		}
+		tempOffe += chars.length ; 
 		start = 0;
 		end = 0;
 		baseValue = 0;
@@ -143,7 +141,7 @@ public class GetWordsImpl implements GetWords {
 
 
 	/**
-	 * ¸ù¾İÓÃ»§´«ÈëµÄcµÃµ½µ¥´ÊµÄ×´Ì¬. 0.´ú±íÕâ¸ö×Ö²»ÔÚ´ÊµäÖĞ 1.¼ÌĞø 2.ÊÇ¸ö´Êµ«ÊÇ»¹¿ÉÒÔ¼ÌĞø 3.Í£Ö¹ÒÑ¾­ÊÇ¸ö´ÊÁË
+	 * æ ¹æ®ç”¨æˆ·ä¼ å…¥çš„cå¾—åˆ°å•è¯çš„çŠ¶æ€. 0.ä»£è¡¨è¿™ä¸ªå­—ä¸åœ¨è¯å…¸ä¸­ 1.ç»§ç»­ 2.æ˜¯ä¸ªè¯ä½†æ˜¯è¿˜å¯ä»¥ç»§ç»­ 3.åœæ­¢å·²ç»æ˜¯ä¸ªè¯äº†
 	 * 
 	 * @param c
 	 * @return
@@ -161,24 +159,22 @@ public class GetWordsImpl implements GetWords {
 	}
 
 	/**
-	 * ÖØÉè·Ö´Ê
+	 * é‡è®¾åˆ†è¯
 	 */
 	public void reset(){
-		tempEnd = 0;
 		checkValue = 0;
-		offe = 0 ;
-		index = 0 ;
+		tempOffe = 0 ;
 	}
 	
 	public static void main(String[] args) {
-		String str = "ÉÏ°ëÄê³ÇÕòÔÚ¸ÚÖ°¹¤Æ½¾ù¹¤×Ê14638Ôª Í¬±ÈÔö12%" ;
+		String str = "å¤§æ³•å¸ˆè¯´çš„ï¼‘ï¼’ï¼“ï¼”ï¼•ï¼–ï¼”ï¼™ï¼˜ï¼—å¤§æ³•å¸ˆè¯´çš„12323123ä¸ŠåŠå¹´åŸé•‡åœ¨å²—èŒï½“ï½†ï½ï½“ï½„ï½†ï½“ï½„ï½ï¼¨ï¼§ï¼µï¼«ï¼¨ï¼©ï¼¡ï¼³ï¼¤ï¼¨ï¼ªï¼¨ï¼¤ï¼³ï¼«ï½ˆï½•ï½‰å·¥å¹³å‡å·¥èµ„14638å…ƒ åŒæ¯”å¢12%" ;
 		GetWordsImpl gwi = new GetWordsImpl();
 		long start = System.currentTimeMillis();
 		String temp = null;
 		for (int i = 0; i < 1; i++) {
 			gwi.setStr(str) ;
 			while ((temp = gwi.allWords()) != null) {
-				System.out.println(temp);
+				System.out.println(temp+gwi.offe);
 			}
 		}
 		System.out.println(System.currentTimeMillis() - start);

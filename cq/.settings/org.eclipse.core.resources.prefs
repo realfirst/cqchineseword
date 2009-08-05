@@ -1,0 +1,23 @@
+#Mon Aug 03 14:27:47 CST 2009
+eclipse.preferences.version=1
+encoding//library/library.dic=UTF-8
+encoding//library/measure/measure.dic=UTF-8
+encoding//library/sortLibrary.dic=UTF-8
+encoding//src/love/cq/demo/CmdDemo.java=UTF-8
+encoding//src/love/cq/domain/Branch.java=UTF-8
+encoding//src/love/cq/domain/Forest.java=UTF-8
+encoding//src/love/cq/domain/Str.java=UTF-8
+encoding//src/love/cq/domain/WoodInterface.java=UTF-8
+encoding//src/love/cq/library/InitDictionary.java=UTF-8
+encoding//src/love/cq/library/MakeArray.java=UTF-8
+encoding//src/love/cq/library/MakeLibrary.java=UTF-8
+encoding//src/love/cq/plug/lucence/CQAnalyzer.java=UTF-8
+encoding//src/love/cq/plug/lucence/CqTokenizer.java=UTF-8
+encoding//src/love/cq/splitWord/GetWords.java=UTF-8
+encoding//src/love/cq/splitWord/SplitWord.java=UTF-8
+encoding//src/love/cq/splitWord/impl/GetWordsImpl.java=UTF-8
+encoding//src/love/cq/splitWord/impl/NatureGetWords.java=UTF-8
+encoding//src/love/cq/splitWord/impl/UserDefinedGetWords.java=UTF-8
+encoding//src/love/cq/util/AnsjArrays.java=UTF-8
+encoding//src/love/cq/util/WordAlert.java=UTF-8
+encoding/src=UTF-8
